@@ -12,7 +12,7 @@ tombolPesan = "Kirim Pesan";
 konten = [
   {
     gambar: "NamaFileGambar",
-    ucapan: "UcapanKalian",
+    ucapan: "apa kek",
   },
 ];
 
