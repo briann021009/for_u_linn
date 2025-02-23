@@ -2,20 +2,42 @@
 onload = () => {
   const c = setTimeout(() => {
     document.body.classList.remove("not-loaded");
-
-    const titles = ('I LOVE U').split('')
     const titleElement = document.getElementById('title');
-    let index = 0;
+    
+    // Teks pertama
+    const firstText = 'I LOVE U';
+    const firstTitles = firstText.split('');
+    let firstIndex = 0;
 
-    function appendTitle() {
-      if (index < titles.length) {
-        titleElement.innerHTML += titles[index];
-        index++;
-        setTimeout(appendTitle, 300); // 1000ms delay
+    // Teks kedua
+    const secondText = 'FOREVER'; // Ganti dengan teks yang diinginkan
+    const secondTitles = secondText.split('');
+    let secondIndex = 0;
+
+    function animateFirstText() {
+      if (firstIndex < firstTitles.length) {
+        titleElement.innerHTML += firstTitles[firstIndex];
+        firstIndex++;
+        setTimeout(animateFirstText, 300);
+      } else {
+        // Setelah teks pertama selesai, hilangkan dan mulai teks kedua
+        setTimeout(() => {
+          titleElement.innerHTML = ''; // Kosongkan teks
+          animateSecondText(); // Mulai animasi teks kedua
+        }, 1000); // Delay sebelum pindah ke teks kedua
       }
     }
 
-    appendTitle();
+    function animateSecondText() {
+      if (secondIndex < secondTitles.length) {
+        titleElement.innerHTML += secondTitles[secondIndex];
+        secondIndex++;
+        setTimeout(animateSecondText, 300);
+      }
+    }
+
+    // Mulai animasi pertama
+    animateFirstText();
 
     clearTimeout(c);
   }, 1000);
