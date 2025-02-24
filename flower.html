@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,26 +8,47 @@
   <link rel="stylesheet" href="css/style.css">
   <title>favv person<3</title>
 
-  <!-- CSS untuk audio -->
   <style>
+    /* Tambahkan styling untuk title */
+    .title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ff69b4;
+      z-index: 999;
+      font-family: cursive;
+      text-align: center;
+      width: 100%;
+    }
+    
     #bgMusic {
       display: none;
     }
   </style>
 </head>
 
-  <!-- Title -->
-  <h1 class="title"><span id="title"></span></h1>
-</body>
-</html>
-
-<!-- Import Javascript -->
-<script src="js/main.js"></script>
-</head>
-
 <body class="not-loaded">
   <!-- Background -->
   <div class="night"></div>
+
+  <!-- Flower Container -->
+  <div class="flowers">
+    <!-- [Semua kode bunga tetap sama] -->
+  </div>
+
+  <!-- Title -->
+  <h1 class="title"><span id="title">Untuk Yang Tercinta</span></h1>
+
+  <!-- Audio -->
+  <audio autoplay loop id="bgMusic">
+    <source src="https://github.com/briann020910/for_u_linn/raw/refs/heads/main/music/musik2.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Import Javascript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
 
   <!-- Flower -->
   <div class="flowers">
