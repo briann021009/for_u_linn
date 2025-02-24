@@ -7,7 +7,7 @@
 </head>
 <body>
   <!-- Audio Player -->
-  <audio controls autoplay loop>
+  <audio autoplay>
     <source src="https://github.com/briann020910/for_u_linn/raw/refs/heads/main/js/about%20you%20x%20about%20you_1739676105_musicaldown.com.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
