@@ -5,57 +5,52 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kirim Pesan</title>
+  <link rel="shortcut icon" href="images/gift.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+  <title>favv person<3</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
     }
 
-    form {
-      margin-top: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    button {
-      padding: 10px 15px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #218838;
-    }
-
     .hidden {
       display: none;
+    }
+
+    #scrollingText {
+      font-size: 24px;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+      animation: scroll 10s linear forwards;
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    #finalMessage {
+      margin-top: 20px;
+      font-size: 20px;
+      color: green;
     }
   </style>
 </head>
 
 <body>
-  <h1>Kirim Pesan ke WhatsApp</h1>
+  <h1 class="title">Send a Message</h1>
 
   <form id="messageForm">
     <label for="phoneNumber">087792797004:</label>
     <input type="text" id="phoneNumber" name="phoneNumber" required>
 
-    <label for="message">kirimm ke wa aku yaa cantikk:</label>
+    <label for="message">dikirim ke wa aku yaa ‼️:</label>
     <textarea id="message" name="message" required></textarea>
 
     <label>Pilih:</label>
@@ -65,44 +60,59 @@
     <label for="no">Tidak</label>
 
     <div id="noMessage" class="hidden">
-      <label for="noReason">kok gituu☹️:</label>
+      <label for="noReason">Kok gituu☹️:</label>
       <textarea id="noReason" name="noReason" placeholder="Tulis keterangan di sini..."></textarea>
     </div>
 
-    <button type="submit">Kirim Pesan</button>
+    <button type="submit">Kirim pesan</button>
   </form>
 
+  <div id="scrollingText" class="hidden"></div>
+  <div id="finalMessage" class="hidden"></div>
+
   <script>
-    // Menampilkan keterangan jika memilih "Tidak"
     document.getElementById('no').addEventListener('change', function() {
       document.getElementById('noMessage').classList.remove('hidden');
     });
 
-    // Menyembunyikan keterangan jika memilih "Ya"
     document.getElementById('yes').addEventListener('change', function() {
       document.getElementById('noMessage').classList.add('hidden');
     });
 
     document.getElementById('messageForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // Mencegah form dari pengiriman default
+      event.preventDefault(); // Prevent default form submission
 
       const phoneNumber = document.getElementById('phoneNumber').value;
       const message = document.getElementById('message').value;
       const choice = document.querySelector('input[name="choice"]:checked').value;
 
       if (choice === 'yes') {
-        // Mengencode pesan untuk URL
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-        window.open(whatsappUrl, '_blank');
+        // Show scrolling text
+        const scrollingText = document.getElementById('scrollingText');
+        scrollingText.textContent = `Sending message to ${phoneNumber}: "${message}"`;
+        scrollingText.classList.remove('hidden');
+
+        // Start scrolling animation
+        scrollingText.style.animation = 'scroll 10s linear forwards';
+
+        // After scrolling, show the final message
+        setTimeout(() => {
+          const encodedMessage = encodeURIComponent(message);
+          const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+          window.open(whatsappUrl, '_blank');
+
+          // Display final message
+          const finalMessage = document.getElementById('finalMessage');
+          finalMessage.textContent = `Pesan telah dikirim ke ${phoneNumber}: "${message}"`;
+          finalMessage.classList.remove('hidden');
+        }, 10000); // Match this duration with the animation duration
       } else {
-        // Jika memilih "Tidak", arahkan ke pesan baru
         alert("Anda memilih 'Tidak'. Silakan isi keterangan.");
         const noReason = document.getElementById('noReason').value;
         if (noReason) {
           alert("Keterangan: " + noReason);
         }
-        // Kembali ke halaman awal
+        // Reset the form
         document.getElementById('messageForm').reset();
         document.getElementById('noMessage').classList.add('hidden');
       }
