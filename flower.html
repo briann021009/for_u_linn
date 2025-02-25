@@ -10,7 +10,6 @@
 
   <!-- Document Title -->
   <title>favv person<3</title>
-</head>
 
   <!-- CSS untuk audio -->
   <style>
@@ -18,10 +17,6 @@
       display: none;
     }
   </style>
-</head>
-
-  <!-- Import Javascript -->
-<script src="js/main.js"></script>
 </head>
 
 <body class="not-loaded">
@@ -327,13 +322,26 @@
   </div>
 
   <!-- Title -->
-  <h1 class="title"><span id="title"></span></h1>
-</div>
+  <h1 class="title"><span id="title">Your Favorite Person</span></h1>
 
-<audio autoplay loop id="bgMusic">
-<source src="https://github.com/briano020910/for_u_linn/raw/refs/heads/main/music/musik2.mp3" type="audio/mpeg">
-</audio>
+  <!-- Audio -->
+  <audio autoplay loop id="bgMusic">
+    <source src="https://github.com/briano020910/for_u_linn/raw/refs/heads/main/music/musik2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Import Javascript -->
+  <script src="js/main.js"></script>
+
+  <!-- Script tambahan untuk memastikan audio dimuat -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const bgMusic = document.getElementById("bgMusic");
+      bgMusic.play().catch(error => {
+        console.error("Audio tidak dapat diputar secara otomatis:", error);
+      });
+    });
+  </script>
 </body>
 
-<!-- Import Javascript -->
-<script src="js/main.js"></script>
+</html>
