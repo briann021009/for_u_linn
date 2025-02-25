@@ -1,6 +1,6 @@
 // Manipulasi teks untuk <h1> (title)
 const title = document.querySelector('.title');
-const mainText = 'Special For You'.split('');
+const mainText = 'Special For You‼️🫵'.split('');
 mainText.forEach((char) => {
   if (char !== ' ') {
     title.innerHTML += `<span>${char}</span>`;
