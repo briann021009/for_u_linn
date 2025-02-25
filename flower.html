@@ -330,6 +330,9 @@
     Your browser does not support the audio element.
   </audio>
 
+  <!-- Tombol untuk memulai musik jika autoplay gagal -->
+  <button id="playButton" style="display: none;">Play Music</button>
+
   <!-- Import Javascript -->
   <script src="js/main.js"></script>
 
@@ -337,8 +340,21 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const bgMusic = document.getElementById("bgMusic");
-      bgMusic.play().catch(error => {
-        console.error("Audio tidak dapat diputar secara otomatis:", error);
+      const playButton = document.getElementById("playButton");
+
+      // Coba memutar audio secara otomatis
+      bgMusic.play().then(() => {
+        bgMusic.muted = false; // Aktifkan suara jika autoplay berhasil
+      }).catch(error => {
+        console.warn("Autoplay gagal, menampilkan tombol play:", error);
+        playButton.style.display = "block"; // Tampilkan tombol play
+      });
+
+      // Tambahkan event listener pada tombol play
+      playButton.addEventListener("click", function () {
+        bgMusic.muted = false; // Aktifkan suara
+        bgMusic.play();
+        playButton.style.display = "none"; // Sembunyikan tombol setelah diputar
       });
     });
   </script>
