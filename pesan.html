@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kirim Pesan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Kirim Pesan ke WhatsApp</h1>
+
+  <form id="messageForm">
+    <label for="phoneNumber">087792797004:</label>
+    <input type="text" id="phoneNumber" name="phoneNumber" required>
+
+    <label for="message">kirimm ke wa aku yaa cantikk:</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <label>Pilih:</label>
+    <input type="radio" id="yes" name="choice" value="yes" required>
+    <label for="yes">Ya</label>
+    <input type="radio" id="no" name="choice" value="no">
+    <label for="no">Tidak</label>
+
+    <div id="noMessage" class="hidden">
+      <label for="noReason">kok gituu☹️:</label>
+      <textarea id="noReason" name="noReason" placeholder="Tulis keterangan di sini..."></textarea>
+    </div>
+
+    <button type="submit">Kirim Pesan</button>
+  </form>
+
+  <script>
+    // Menampilkan keterangan jika memilih "Tidak"
+    document.getElementById('no').addEventListener('change', function() {
+      document.getElementById('noMessage').classList.remove('hidden');
+    });
+
+    // Menyembunyikan keterangan jika memilih "Ya"
+    document.getElementById('yes').addEventListener('change', function() {
+      document.getElementById('noMessage').classList.add('hidden');
+    });
+
+    document.getElementById('messageForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Mencegah form dari pengiriman default
+
+      const phoneNumber = document.getElementById('phoneNumber').value;
+      const message = document.getElementById('message').value;
+      const choice = document.querySelector('input[name="choice"]:checked').value;
+
+      if (choice === 'yes') {
+        // Mengencode pesan untuk URL
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        window.open(whatsappUrl, '_blank');
+      } else {
+        // Jika memilih "Tidak", arahkan ke pesan baru
+        alert("Anda memilih 'Tidak'. Silakan isi keterangan.");
+        const noReason = document.getElementById('noReason').value;
+        if (noReason) {
+          alert("Keterangan: " + noReason);
+        }
+        // Kembali ke halaman awal
+        document.getElementById('messageForm').reset();
+        document.getElementById('noMessage').classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+
+</html>
