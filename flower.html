@@ -7,22 +7,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="images/gift.png" type="image/x-icon">
   <link rel="stylesheet" href="css/style.css">
-
-  <!-- Document Title -->
-  <title>favv person<3</title>
-
+  
   <!-- CSS untuk audio -->
   <style>
     #bgMusic {
       display: none;
     }
+    /* Tambahan style untuk overlay pembuka musik */
+    #musicOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
   </style>
+
+  <!-- Document Title -->
+  <title>favv person<3</title>
 </head>
 
 <body class="not-loaded">
-  <!-- Background -->
-  <div class="night"></div>
+  <!-- Overlay untuk memulai musik -->
+  <div id="musicOverlay">
+    <div style="text-align: center; padding: 20px;">
+      <h2>Click anywhere to start the music</h2>
+    </div>
+  </div>
 
+  <div class="night"></div>
+  
   <!-- Flower -->
   <div class="flowers">
     <div class="flower flower--1">
@@ -324,40 +344,41 @@
   <!-- Title -->
   <h1 class="title"><span id="title"></span></h1>
 
-  <!-- Audio -->
-  <audio autoplay loop id="bgMusic">
-    <source src="https://github.com/briann020910/for_u_linn/raw/refs/heads/main/music/about%20you%20x%20about%20you_1739676105_musicaldown.com.mp3" type="audio/mpeg">
+  <!-- Audio Element -->
+  <audio id="bgMusic" loop>
+    <source src="https://github.com/briano020910/for_u_linn/raw/refs/heads/main/music/musik2.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Tombol untuk memulai musik jika autoplay gagal -->
-  <button id="playButton" style="display: none;">Play Music</button>
-
   <!-- Import Javascript -->
   <script src="js/main.js"></script>
-
-  <!-- Script tambahan untuk memastikan audio dimuat -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const bgMusic = document.getElementById("bgMusic");
-      const playButton = document.getElementById("playButton");
+    // Script untuk handle autoplay dengan interaksi pengguna
+    document.addEventListener('DOMContentLoaded', function() {
+      const musicOverlay = document.getElementById('musicOverlay');
+      const bgMusic = document.getElementById('bgMusic');
+      
+      // Fungsi untuk memulai musik
+      function startMusic() {
+        bgMusic.play().catch(error => {
+          console.log('Autoplay prevented:', error);
+        });
+        musicOverlay.style.display = 'none';
+      }
 
-      // Coba memutar audio secara otomatis
+      // Trigger musik saat overlay diklik
+      musicOverlay.addEventListener('click', startMusic);
+      
+      // Atau trigger musik saat seluruh halaman diklik
+      document.body.addEventListener('click', startMusic);
+      
+      // Coba mulai musik otomatis jika memungkinkan
       bgMusic.play().then(() => {
-        bgMusic.muted = false; // Aktifkan suara jika autoplay berhasil
+        musicOverlay.style.display = 'none';
       }).catch(error => {
-        console.warn("Autoplay gagal, menampilkan tombol play:", error);
-        playButton.style.display = "block"; // Tampilkan tombol play
-      });
-
-      // Tambahkan event listener pada tombol play
-      playButton.addEventListener("click", function () {
-        bgMusic.muted = false; // Aktifkan suara
-        bgMusic.play();
-        playButton.style.display = "none"; // Sembunyikan tombol setelah diputar
+        console.log('Autoplay blocked, waiting for user interaction');
       });
     });
   </script>
 </body>
-
 </html>
