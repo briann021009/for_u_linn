@@ -1,5 +1,3 @@
-// main.js
-
 window.onload = () => {
   // Hapus kelas "not-loaded" setelah delay 1 detik
   const c = setTimeout(() => {
@@ -13,42 +11,39 @@ window.onload = () => {
       return;
     }
 
-    // Teks pertama
-    const firstText = 'I LOVE U';
-    const firstTitles = firstText.split('');
-    let firstIndex = 0;
+    // Daftar teks yang akan ditampilkan
+    const texts = ['I LOVE U', 'FOREVER', 'YOU ARE MY SUNSHINE', 'HAPPINESS', 'ALWAYS AND FOREVER'];
+    let textIndex = 0; // Indeks untuk teks saat ini
 
-    // Teks kedua
-    const secondText = 'FOREVER'; // Ganti dengan teks yang diinginkan
-    const secondTitles = secondText.split('');
-    let secondIndex = 0;
+    // Fungsi untuk animasi teks
+    function animateText() {
+      const currentText = texts[textIndex];
+      const currentTitles = currentText.split('');
+      let charIndex = 0;
 
-    // Animasi untuk teks pertama
-    function animateFirstText() {
-      if (firstIndex < firstTitles.length) {
-        titleElement.innerHTML += firstTitles[firstIndex];
-        firstIndex++;
-        setTimeout(animateFirstText, 300); // Delay 300ms antar karakter
-      } else {
-        // Setelah teks pertama selesai, hilangkan dan mulai teks kedua
-        setTimeout(() => {
-          titleElement.innerHTML = ''; // Kosongkan teks
-          animateSecondText(); // Mulai animasi teks kedua
-        }, 1000); // Delay 1 detik sebelum pindah ke teks kedua
+      // Fungsi untuk menampilkan karakter
+      function displayCharacter() {
+        if (charIndex < currentTitles.length) {
+          titleElement.innerHTML += currentTitles[charIndex];
+          charIndex++;
+          setTimeout(displayCharacter, 300); // Delay 300ms antar karakter
+        } else {
+          // Setelah teks selesai, kosongkan dan pindah ke teks berikutnya
+          setTimeout(() => {
+            titleElement.innerHTML = ''; // Kosongkan teks
+            textIndex++; // Pindah ke teks berikutnya
+            if (textIndex < texts.length) {
+              animateText(); // Mulai animasi teks berikutnya
+            }
+          }, 1000); // Delay 1 detik sebelum pindah ke teks berikutnya
+        }
       }
+
+      displayCharacter(); // Mulai menampilkan karakter
     }
 
-    // Animasi untuk teks kedua
-    function animateSecondText() {
-      if (secondIndex < secondTitles.length) {
-        titleElement.innerHTML += secondTitles[secondIndex];
-        secondIndex++;
-        setTimeout(animateSecondText, 300); // Delay 300ms antar karakter
-      }
-    }
-
-    // Mulai animasi pertama
-    animateFirstText();
+    // Mulai animasi teks pertama
+    animateText();
 
     clearTimeout(c);
   }, 1000); // Delay 1 detik sebelum mulai animasi
