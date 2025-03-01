@@ -12,7 +12,7 @@ window.onload = () => {
     }
 
     // Daftar teks yang akan ditampilkan
-    const texts = ['I LOVE U', 'FOREVER', 'YOU ARE MY SUNSHINE', 'HAPPINESS', 'ALWAYS AND FOREVER'];
+    const texts = ['HALOO CANTIKK KUU‼️', 'how"s your day?', 'i hope you"re okayy', 'happy eid fitri yaa cantikk‼️', 'ga kerasa yaa udah lebaran ajaa'];
     let textIndex = 0; // Indeks untuk teks saat ini
 
     // Fungsi untuk animasi teks
