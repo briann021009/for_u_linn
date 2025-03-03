@@ -26,14 +26,17 @@ window.onload = () => {
         if (charIndex < currentTitles.length) {
           titleElement.innerHTML += currentTitles[charIndex];
           charIndex++;
-          setTimeout(displayCharacter, 87,5); // Ubah delay menjadi 150ms untuk kecepatan lebih tinggi
+          setTimeout(displayCharacter, 87); // Ubah delay menjadi 87ms untuk kecepatan lebih tinggi
         } else {
           // Setelah teks selesai, kosongkan dan pindah ke teks berikutnya
           setTimeout(() => {
-            titleElement.innerHTML = ''; // Kosongkan teks
             textIndex++; // Pindah ke teks berikutnya
             if (textIndex < texts.length) {
+              titleElement.innerHTML = ''; // Kosongkan teks untuk teks berikutnya
               animateText(); // Mulai animasi teks berikutnya
+            } else {
+              // Jika sudah menampilkan semua teks, tampilkan teks terakhir dan biarkan tetap muncul
+              titleElement.innerHTML = texts[texts.length - 1]; // Tampilkan teks terakhir
             }
           }, 1000); // Delay 1 detik sebelum pindah ke teks berikutnya
         }
