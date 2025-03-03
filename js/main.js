@@ -26,7 +26,7 @@ window.onload = () => {
         if (charIndex < currentTitles.length) {
           titleElement.innerHTML += currentTitles[charIndex];
           charIndex++;
-          setTimeout(displayCharacter, 87); // Ubah delay menjadi 87ms untuk kecepatan lebih tinggi
+          setTimeout(displayCharacter, 150); // Ubah delay menjadi 87ms untuk kecepatan lebih tinggi
         } else {
           // Setelah teks selesai, kosongkan dan pindah ke teks berikutnya
           setTimeout(() => {
