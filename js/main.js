@@ -12,7 +12,7 @@ window.onload = () => {
     }
 
     // Daftar teks yang akan ditampilkan
-    const texts = ['HALOO CANTIKK KUU‼️', 'HOW"S UR DAY CANTIKK?', 'I HOPE YOU"RE OKAYY', 'MINAL AIDZIN WAL FAIDZIN YAA CANTIKK‼️', 'MAAF LAHIR DAN BATIN YAA', 'MAAFIN AKU YAA?☹️', 'FOR NOW, I WILL ALWAYS HERE FOR YOU', 'I PROVE IT ALL', 'REMEMBER, I ALWAYS HERE‼️', 'CALL ME IF YOU NEED ME, OKAYY?', 'MAKASII UDAH BACA INI SEMUA CANTIKK‼️🤍✨' ];
+    const texts = ['HALOO CANTIKK KUU‼️', 'HOW"S UR DAY CANTIKK?', 'I HOPE YOU"RE OKAYY', 'MINAL AIDZIN WAL FAIDZIN YAA CANTIKK‼️', 'MAAF LAHIR DAN BATIN YAA', 'MAAFIN AKU YAA?☹️', 'FOR NOW, I WILL ALWAYS HERE FOR YOU', 'I PROVE IT ALL', 'REMEMBER, I ALWAYS HERE‼️', 'CALL ME IF YOU NEED ME, OKAYY?', 'MAKASII UDAH BACA INI SEMUA CANTIKK‼️🤍✨', 'SEE YOUU ANAKK BAIKK👋🏻🫶🏻😼🫵🏻];
     let textIndex = 0; // Indeks untuk teks saat ini
 
     // Fungsi untuk animasi teks
