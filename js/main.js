@@ -21,7 +21,7 @@ window.onload = () => {
         if (charIndex < currentTitles.length) {
           titleElement.innerHTML += currentTitles[charIndex];
           charIndex++;
-          setTimeout(displayCharacter, 300);
+          setTimeout(displayCharacter, 290);
         } else {
           setTimeout(() => {
             textIndex++;
