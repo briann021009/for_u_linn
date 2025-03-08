@@ -1,9 +1,7 @@
 window.onload = () => {
-  // Hapus kelas "not-loaded" setelah delay 1 detik
   const c = setTimeout(() => {
     document.body.classList.remove("not-loaded");
 
-    // Ambil elemen dengan ID 'title'
     const titleElement = document.getElementById('title');
 
     if (!titleElement) {
@@ -11,43 +9,35 @@ window.onload = () => {
       return;
     }
 
-    // Daftar teks yang akan ditampilkan
     const texts = ['HALOO CANTIKK KUU‼️', 'HOW"S UR DAY CANTIKK?', 'I HOPE YOU"RE OKAYY', 'MINAL AIDZIN WAL FAIDZIN YAA CANTIKK‼️', 'MAAF LAHIR DAN BATIN YAA', 'MAAFIN AKU YAA?☹️', 'FOR NOW, I WILL ALWAYS HERE FOR YOU', 'I PROVE IT ALL', 'REMEMBER, I ALWAYS HERE‼️', 'CALL ME IF YOU NEED ME, OKAYY?', 'MAKASII UDAH BACA INI SEMUA CANTIKK‼️🤍✨', 'SEE YOUU ANAKK BAIKK👋🏻🫶🏻😼🫵🏻'];
-    let textIndex = 0; // Indeks untuk teks saat ini
+    let textIndex = 0;
 
-    // Fungsi untuk animasi teks
     function animateText() {
       const currentText = texts[textIndex];
       const currentTitles = currentText.split('');
       let charIndex = 0;
 
-      // Fungsi untuk menampilkan karakter
       function displayCharacter() {
         if (charIndex < currentTitles.length) {
           titleElement.innerHTML += currentTitles[charIndex];
           charIndex++;
-          setTimeout(displayCharacter, 300); // Ubah delay menjadi 87ms untuk kecepatan lebih tinggi
+          setTimeout(displayCharacter, 300);
         } else {
-          // Setelah teks selesai, kosongkan dan pindah ke teks berikutnya
           setTimeout(() => {
-            textIndex++; // Pindah ke teks berikutnya
+            textIndex++;
             if (textIndex < texts.length) {
-              titleElement.innerHTML = ''; // Kosongkan teks untuk teks berikutnya
-              animateText(); // Mulai animasi teks berikutnya
+              titleElement.innerHTML = '';
+              animateText();
             } else {
-              // Jika sudah menampilkan semua teks, tampilkan teks terakhir dan biarkan tetap muncul
-              titleElement.innerHTML = texts[texts.length - 1]; // Tampilkan teks terakhir
+              titleElement.innerHTML = texts[texts.length - 1];
             }
-          }, 1000); // Delay 1 detik sebelum pindah ke teks berikutnya
+          }, 1000);
         }
       }
 
-      displayCharacter(); // Mulai menampilkan karakter
+      displayCharacter();
     }
 
-    // Mulai animasi teks pertama
     animateText();
-
-    clearTimeout(c);
-  }, 1000); // Delay 1 detik sebelum mulai animasi
+  }, 1000);
 };
