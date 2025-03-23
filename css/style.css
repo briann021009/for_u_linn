@@ -1213,4 +1213,60 @@ body {
   animation-play-state: paused !important;
 }
 
+/* Petasan Bentuk Hati */
+.firework-heart {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: #ff69b4; /* Warna pink */
+  transform: rotate(-45deg);
+  animation: explode 1s forwards;
+}
+
+.firework-heart::before,
+.firework-heart::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #ff69b4; /* Warna pink */
+  border-radius: 50%;
+}
+
+.firework-heart::before {
+  top: -50px;
+  left: 0;
+}
+
+.firework-heart::after {
+  left: 50px;
+  top: 0;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* Batang Petasan */
+.firework-stem {
+  position: absolute;
+  bottom: 10px; /* Sesuaikan sesuai kebutuhan */
+  left: 50%;
+  width: 10px;
+  height: 50px;
+  background-color: #ff69b4; /* Warna pink */
+  transform: translateX(-50%);
+}
+
 /*# sourceMappingURL=style.css.map */
