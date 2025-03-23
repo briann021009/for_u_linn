@@ -192,7 +192,6 @@ body {
 }
 
 .flower__line__leaf--2 {
-  top: 45%;
   transform: rotate(70deg) rotateY(30deg);
   background-color: #ff69b4; /* Ubah warna menjadi pink */
 }
@@ -257,16 +256,18 @@ body {
   height: var(--h);
   border-top-right-radius: var(--h);
   border-bottom-left-radius: var(--h);
-  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.4), #fff);
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0.4), #ff69b4);
 }
 
 .flower__line__leaf--1 {
   transform: rotate(70deg) rotateY(30deg);
+  background-color: #ff69b4;
 }
 
 .flower__line__leaf--2 {
   top: 45%;
   transform: rotate(70deg) rotateY(30deg);
+  background-color: #ff69b4;
 }
 
 .flower__line__leaf--3,
@@ -310,7 +311,7 @@ body {
 }
 
 .flower__light:nth-child(odd) {
-  background-color: #fff;
+  background-color: #ff69b4;
 }
 
 .flower__light--1 {
@@ -369,6 +370,7 @@ body {
 
 .flower__grass--1 {
   animation: moving-grass 2s linear infinite;
+  background-color: #ff69b4;
 }
 
 .flower__grass--2 {
