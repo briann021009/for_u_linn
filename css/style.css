@@ -285,14 +285,14 @@ body {
 
 .flower__line__leaf--4 {
   top: 40%;
-  background-color: #ff69b4
+  
 }
 
 .flower__line__leaf--5 {
   top: 0;
   transform-origin: left;
   transform: rotate(70deg) rotateY(30deg) scale(0.6);
-  background-color: #ff69b4
+
 }
 
 .flower__line__leaf--6 {
@@ -300,7 +300,7 @@ body {
   left: -450%;
   transform-origin: right;
   transform: rotate(-70deg) rotateY(30deg) scale(0.6);
-  background-color: #ff69b4
+  
 }
 
 .flower__light {
@@ -359,7 +359,7 @@ body {
 }
 
 .flower__grass {
-  --c: #3cf76e;
+  --c: #ff69b4;
   --line-w: 1.5vmin;
   position: absolute;
   bottom: 12vmin;
